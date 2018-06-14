@@ -28,17 +28,24 @@ class PostsShow extends Component {
         }
         //Returns elements displayed on screen; ".bind(this)" - we need to bind because we are using "this" on the ".onDeleteClick()" callback function
         return (
-            <div>
-                <Link to="/">Back to Index</Link>
+            <div className="container">
+              <div>
+                <h3>Title: {post.title}</h3>
+                <h6><strong>Categories:</strong> {post.categories}</h6>
+                <p><strong>Content:</strong> {post.content}</p>
+              </div>
+              <div>
+                <Link to="/" className="btn btn-primary pull-xs-right">
+                  Back to Index
+                </Link>
+              </div>
                 <button
                     className="btn btn-danger pull-xs-right"
                     onClick={this.onDeleteClick.bind(this)}
                 >
                     Delete Post
                 </button>
-                <h3>{post.title}</h3>
-                <h6>Categories: {post.categories}</h6>
-                <p>{post.content}</p>
+
             </div>
         );
     }

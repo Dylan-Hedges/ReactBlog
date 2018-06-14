@@ -39,6 +39,7 @@ class PostsNew extends Component {
         const { handleSubmit } = this.props;
         //"onSubmit" - when the form is submitted; "handleSubmit" - Redux-Form performs validation checks; "this.onSubmit.bind(this)" - then execute the function we defined
         return(
+          <div className= "container">
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 <Field
                     label="Title"
@@ -58,6 +59,7 @@ class PostsNew extends Component {
             <button type="submit" className="btn btn-primary">Submit</button>
             <Link to ="/" className="btn btn-danger">Cancel</Link>
             </form>
+          </div>
         );
     }
 }

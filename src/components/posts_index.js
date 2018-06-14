@@ -28,16 +28,14 @@ class PostsIndex extends Component {
     //If we console.log(this.props.posts); this there will be 2 console logs - 1st = the component is rendered with no posts, 2nd = the component is rerendered with the blogposts once the Ajax request is complete (promise is resolved, state is recalculated, component rerendered with prop = posts); <Link> allows users to navigate (similar to the <a> tag but doesnt go to a server, instead displays components, still showing as <a> in inspector? - behind the scenes React-Router uses event handlers to change its behavior)
     render() {
         return (
-            <div>
-                <div className="text-xs-right">
-                    <Link className="btn btn-primary" to="/posts/new">
-                        Add a post
-                    </Link>
-                </div>
+            <div className="container">
                 <h3>Posts</h3>
                 <ul className="list-group">
                     {this.renderPosts()}
                 </ul>
+                <Link className="btn btn-primary" to="/posts/new">
+                      Add a post
+                </Link>
             </div>
         );
     }
