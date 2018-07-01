@@ -11,14 +11,17 @@ import { fetchPosts } from '../actions';
 //"componentDidMount()" - a lifecycle method, React will automatically execute whatever is inside this method as soon as component is rendered on screen, fetching data is asynchronous (takes time to respond) and there is no way to tell React to hold off rendering components (it will render components as quickly as possible) so it doesnt matter if the request is executed before or after rendering
 class PostsIndex extends Component {
     componentDidMount(){
+        //Kicks off the data loading process
         this.props.fetchPosts();
     }
     //_.map() - lodash map helper that returns an array of posts, "this.props.posts, post => " loops through each post and stores it in "post" then executes the function, "post.title" renders the post title on screen, as this is an object that contains a list of posts and not an Array, we cannot use the built in array helper (".map")
     renderPosts(){
         return _.map(this.props.posts, post => {
+          console.log(this.props.posts);
+            //key={post._id.$oid} - this key is mapped in reducer_posts.js -> FETCH_POSTS
             return (
-              <li className="list-group-item" key={post.id}>
-                <Link to={`/posts/${post.id}`}>
+              <li className="list-group-item" key={post._id.$oid}>
+                <Link to={`/posts/${post._id.$oid}`}>
                     {post.title}
                 </Link>
               </li>
@@ -43,6 +46,7 @@ class PostsIndex extends Component {
 
 //mapStateToProps() - allows component to access the list blogposts for rendering on screen, takes the blogposts in our App level state and maps it to the props of this component (the component accesses the blogposts via its properties)
 function mapStateToProps(state){
+    console.log(state);
     return { posts: state.posts };
 }
 

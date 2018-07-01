@@ -6,7 +6,7 @@ import { fetchPost, deletePost } from '../actions';
 class PostsShow extends Component {
     //As soon as the component appears on screen, fetch the post
     componentDidMount() {
-        //Takes post id and stores in variable - "this.props.match.params" is provided to us directly from react-router, ".match" - top level property, ".params" - an object that list all the different wildcards that exist inside the URL (e.g we might havd :id and :commentid), ".id" - specifies we only want the post id
+        //Takes post id and assigns it in a variable called "id" - "this.props.match.params" is provided to us directly from react-router, ".match" - top level property, ".params" - an object that list all the different wildcards that exist inside the URL (e.g we might havd :id and :commentid), ".id" - specifies we only want the post id
         const { id } = this.props.match.params;
         //Executes the action creator to fetch the post and passes in the post id
         this.props.fetchPost(id);
@@ -55,6 +55,7 @@ class PostsShow extends Component {
 function mapStateToProps({ posts }, ownProps) {
     //Selects & returns the post from the list of posts - Matches the posts id and returns/maps only that post to the component
     return { post: posts[ownProps.match.params.id] };
+    console.log(posts);
 }
 
 //Wires the action creator and executes the mapStateToProps function on this component
