@@ -1,6 +1,6 @@
 //"axios" - makes requests to the blog API; "redux-promise" - handles asynchronous elements of request
 import axios from 'axios';
-import config from '../config/config';
+import keys from '../keys/keys';
 
 //Action types defined here and not in the function because its easier to change and manage
 export const FETCH_POSTS = 'fetch_posts';
@@ -9,8 +9,8 @@ export const CREATE_POST = 'create_post';
 export const DELETE_POST = 'delete_post';
 
 //Root URL = base URL, we change the end depending on if its a GET, POST or DELETE
-const ROOT_URL = `${config.rootUrl}`;
-const API_KEY = `${config.apiKey}`;
+const ROOT_URL = `${keys.rootUrl}`;
+const API_KEY = `${keys.apiKey}`;
 
 //-----------------------------ACTION CREATORS--------------------------------
 //--------FETCH all posts-------------------
