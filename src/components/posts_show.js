@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchPost, deletePost } from '../actions';
+import classes from './style.css';
 
 class PostsShow extends Component {
     //As soon as the component appears on screen, fetch the post
@@ -29,10 +30,10 @@ class PostsShow extends Component {
         //Returns elements displayed on screen; ".bind(this)" - we need to bind because we are using "this" on the ".onDeleteClick()" callback function
         return (
             <div className="container">
-              <div>
-                <h3>Title: {post.title}</h3>
-                <h6><strong>Categories:</strong> {post.categories}</h6>
-                <p><strong>Content:</strong> {post.content}</p>
+              <div className={classes.blogpostBorder}>
+                <h2>{post.title}</h2>
+                <img src={post.categories} className={classes.imageStyleIndividual}/>
+                <p>{post.content}</p>
               </div>
               <div>
                 <Link to="/" className="btn btn-primary pull-xs-right">
@@ -45,7 +46,6 @@ class PostsShow extends Component {
                 >
                     Delete Post
                 </button>
-
             </div>
         );
     }

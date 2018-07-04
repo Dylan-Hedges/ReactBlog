@@ -21,13 +21,17 @@ class PostsIndex extends Component {
           console.log(post);
             //key={post._id.$oid} - this key is mapped in reducer_posts.js -> FETCH_POSTS
             return (
-              <div className="row">
                 <li className="list-group-item" key={post._id.$oid}>
-                  <Link to={`/posts/${post._id.$oid}`}>{post.title}</Link>
-                  <img src={post.categories} className={classes.imageStyle}/>
-                  <p>{post.content}</p>
+                  <div className="row">
+                    <div className='col-md-2'>
+                      <img src={post.categories} className={classes.imageStyleIndex}/>
+                    </div>
+                    <div className='col-md-10'>
+                      <Link to={`/posts/${post._id.$oid}`}>{post.title}</Link>
+                      <p>{post.content.substring(0, 300)}...</p>
+                    </div>
+                  </div>
                 </li>
-              </div>
             );
         });
     }
@@ -35,7 +39,7 @@ class PostsIndex extends Component {
     render() {
         return (
             <div className="container">
-                <h3>Posts</h3>
+                <h2>React/Redux Blog</h2>
                 <ul className="list-group">
                     {this.renderPosts()}
                 </ul>
