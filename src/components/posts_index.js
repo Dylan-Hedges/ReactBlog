@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 //Imports fetchPosts action creator
 import { fetchPosts } from '../actions';
+import classes from './style.css';
 
 //"componentDidMount()" - a lifecycle method, React will automatically execute whatever is inside this method as soon as component is rendered on screen, fetching data is asynchronous (takes time to respond) and there is no way to tell React to hold off rendering components (it will render components as quickly as possible) so it doesnt matter if the request is executed before or after rendering
 class PostsIndex extends Component {
@@ -17,14 +18,16 @@ class PostsIndex extends Component {
     //_.map() - lodash map helper that returns an array of posts, "this.props.posts, post => " loops through each post and stores it in "post" then executes the function, "post.title" renders the post title on screen, as this is an object that contains a list of posts and not an Array, we cannot use the built in array helper (".map")
     renderPosts(){
         return _.map(this.props.posts, post => {
-          console.log(this.props.posts);
+          console.log(post);
             //key={post._id.$oid} - this key is mapped in reducer_posts.js -> FETCH_POSTS
             return (
-              <li className="list-group-item" key={post._id.$oid}>
-                <Link to={`/posts/${post._id.$oid}`}>
-                    {post.title}
-                </Link>
-              </li>
+              <div className="row">
+                <li className="list-group-item" key={post._id.$oid}>
+                  <Link to={`/posts/${post._id.$oid}`}>{post.title}</Link>
+                  <img src={post.categories} className={classes.imageStyle}/>
+                  <p>{post.content}</p>
+                </li>
+              </div>
             );
         });
     }
@@ -46,7 +49,6 @@ class PostsIndex extends Component {
 
 //mapStateToProps() - allows component to access the list blogposts for rendering on screen, takes the blogposts in our App level state and maps it to the props of this component (the component accesses the blogposts via its properties)
 function mapStateToProps(state){
-    console.log(state);
     return { posts: state.posts };
 }
 

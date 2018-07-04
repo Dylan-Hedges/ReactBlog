@@ -47,7 +47,7 @@ class PostsNew extends Component {
                     component={this.renderField}
                 />
                 <Field
-                    label="Categories"
+                    label="Image URL"
                     name="categories"
                     component={this.renderField}
                 />
@@ -73,7 +73,7 @@ function validate(values){
         errors.title = "Enter a title";
     }
     if (!values.categories) {
-        errors.categories = "Enter some categories";
+        errors.categories = "Enter a valid URL";
     }
     if (!values.content) {
         errors.content = "Enter some content";
