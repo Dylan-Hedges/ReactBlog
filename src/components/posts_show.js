@@ -32,7 +32,7 @@ class PostsShow extends Component {
             <div className="container">
               <div className={classes.blogpostBorder}>
                 <h2>{post.title}</h2>
-                <img src={post.categories} className={classes.imageStyleIndividual}/>
+                <img src={post.imageurl} className={classes.imageStyleIndividual}/>
                 <p>{post.content}</p>
               </div>
               <div>

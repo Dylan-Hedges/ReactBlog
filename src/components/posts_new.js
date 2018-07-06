@@ -48,7 +48,7 @@ class PostsNew extends Component {
                 />
                 <Field
                     label="Image URL"
-                    name="categories"
+                    name="imageurl"
                     component={this.renderField}
                 />
                 <Field
@@ -72,8 +72,8 @@ function validate(values){
         //add a property called title to the errors object, once this gets added and then returned Redux-Form will know there is an issue with the form and not submit
         errors.title = "Enter a title";
     }
-    if (!values.categories) {
-        errors.categories = "Enter a valid URL";
+    if (!values.imageurl) {
+        errors.imageurl = "Enter a valid URL";
     }
     if (!values.content) {
         errors.content = "Enter some content";

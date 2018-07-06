@@ -24,7 +24,7 @@ class PostsIndex extends Component {
                 <li className="list-group-item" key={post._id.$oid}>
                   <div className="row">
                     <div className='col-md-2'>
-                      <img src={post.categories} className={classes.imageStyleIndex}/>
+                      <img src={post.imageurl} className={classes.imageStyleIndex} />
                     </div>
                     <div className='col-md-10'>
                       <Link to={`/posts/${post._id.$oid}`}>{post.title}</Link>
