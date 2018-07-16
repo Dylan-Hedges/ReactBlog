@@ -36,14 +36,14 @@ class PostsShow extends Component {
                 <p>{post.content}</p>
               </div>
               <div>
+                <Link to="/posts/:id/edit" className="btn btn-primary pull-xs-right">
+                  Edit
+                </Link>
                 <Link to="/" className="btn btn-primary pull-xs-right">
                   Back to Index
                 </Link>
               </div>
-                <button
-                    className="btn btn-danger pull-xs-right"
-                    onClick={this.onDeleteClick.bind(this)}
-                >
+                <button className="btn btn-danger pull-xs-right"onClick={this.onDeleteClick.bind(this)}>
                     Delete Post
                 </button>
             </div>
