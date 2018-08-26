@@ -6,6 +6,7 @@ import keys from '../keys/keys';
 export const FETCH_POSTS = 'fetch_posts';
 export const FETCH_POST = 'fetch_post';
 export const CREATE_POST = 'create_post';
+export const EDIT_POST = 'edit_post';
 export const DELETE_POST = 'delete_post';
 
 //Root URL = base URL, we change the end depending on if its a GET, POST or DELETE
@@ -35,6 +36,19 @@ export function createPost(values, callback){
         payload: request
     }
 }
+
+//-----------EDIT post-----------------
+export function editPost(values, id, callback){
+    //Performs a POST request using Axios, constructs a URL using the base URL + "/posts" + the API Key and sends then sends a POST request containing the form values typed by the user; ".then(() => callback()" - once the promise has resolved, execute the callback function (passed in from post_new.js) which sends the user back to the homepage (this way it wont redirect the user until the post has been created)
+    const request = axios.put(`${ROOT_URL}/posts/${API_KEY}&q={"_id":${id}}`, values)
+        .then(() => callback());
+    return {
+        type: EDIT_POST,
+        payload: request
+    }
+}
+
+
 //--------FETCHES individual post----------
 //(id) pass in the id of the post we want to fetch - we dont use the big list of posts called in fetchPosts() we make a new Ajax requst to only get the data we need
 export function fetchPost(id) {

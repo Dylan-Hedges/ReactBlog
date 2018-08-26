@@ -5,8 +5,22 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createPost } from '../actions';
 import { fetchPost } from '../actions';
+import { editPost } from '../actions';
 
 class PostsEdit extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: ''};
+    this.handleChange = this.handleChange.bind(this);
+    this.renderField = this.renderField.bind(this);
+  }
+
+  handleChange(event) {
+    console.log(this.state);
+    // this.setState({value: event.target.value});
+  }
+
   //As soon as the component appears on screen, fetch the post
   componentDidMount() {
       //Takes post id and assigns it in a variable called "id" - "this.props.match.params" is provided to us directly from react-router, ".match" - top level property, ".params" - an object that list all the different wildcards that exist inside the URL (e.g we might havd :id and :commentid), ".id" - specifies we only want the post id
@@ -44,9 +58,9 @@ class PostsEdit extends Component {
         );
     }
     //When the user clicks the submit button
-    onSubmit(values) {
+    onSubmit(values, id) {
         //Sends the values of the form + a callback function to the "createPost" action creator (actions -> index.js)
-        this.props.createPost(values, () => {
+        this.props.editPost(values, () => {
             //Sends the user back to the posts page
             this.props.history.push('/');
         });

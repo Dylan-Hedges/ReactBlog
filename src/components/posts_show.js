@@ -36,7 +36,7 @@ class PostsShow extends Component {
                 <p>{post.content}</p>
               </div>
               <div>
-                <Link to={`/posts/${post._id.$oid}/edit`} >
+                <Link to={`/posts/${post._id.$oid}/edit`} className="btn btn-success text-white pull-xs-right">
                   Edit
                 </Link>
                 <Link to="/" className="btn btn-primary pull-xs-right">
